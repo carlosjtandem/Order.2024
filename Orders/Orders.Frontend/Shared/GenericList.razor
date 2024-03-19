@@ -1,0 +1,37 @@
+﻿@typeparam Titem
+
+<h3>Listado</h3>
+
+@if (MyList == null)
+{
+    @if (Loading is null)
+    {
+        @* <p>Cargando!!..</p> *@
+        <div class="d-flex justify-content-center align-items-center">
+            <img src="https://i.stack.imgur.com/hzk6C.gif" />
+        </div>
+    }
+    else
+    {
+        @Loading
+    }
+
+}
+else if (MyList.Count == 0) //Lista vacia, tenemos que preguntar si el campo NoRecords esta
+{
+    @if (NoRecords is null)
+    {
+        <p>No hay registros para mostrar..</p>
+    }
+    else //DEberia pintar mi componente de no records
+    {
+        @NoRecords
+    }
+}
+else
+{
+    @Body
+}
+
+
+
