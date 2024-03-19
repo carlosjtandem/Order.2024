@@ -1,0 +1,49 @@
+﻿<!--indica como la voy a rutear-->
+@page "/countries"
+@inject IRepository repository
+<h3>Paises</h3>
+
+
+@if (Countries == null)
+{
+
+    <p>Cargando...</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Pais</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var country in Countries!)  //! porque puede ser null
+            {
+                <tr>
+                    <td>@country.Name</td>
+                    <td>
+                        <a class="btn btn-warning">Editar</a>
+                        <button class="btn btn-danger ">Borrar</button>
+                    </td>
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+}
+@code {
+    public List<Country>? Countries { get; set; } //? es nulleable porque puede pasar que este vacio
+
+    //parte del ciclo de vida
+    protected async override Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        var responseHttp = await repository.GetAsync<List<Country>>("api/countries");
+
+        Countries = responseHttp.Response;  // aqui devuelve la lista de paises
+    }
+}
