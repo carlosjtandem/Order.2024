@@ -2,7 +2,8 @@
 
 namespace Orders.Frontend.Shared
 {
-    //Va a permitir listar cualquier objecto
+    //Va a permitir listar cualquier objeto.
+    //Esta clase recibe 4 parametros donde MyList es el listado en si.
     public partial class GenericList<Titem>
     {
         [Parameter] public RenderFragment? Loading { get; set; } //Puede ser null

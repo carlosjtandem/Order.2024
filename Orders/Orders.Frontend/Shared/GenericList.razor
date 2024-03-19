@@ -6,13 +6,13 @@
 {
     @if (Loading is null)
     {
-        @* <p>Cargando!!..</p> *@
-        <div class="d-flex justify-content-center align-items-center">
-            <img src="https://i.stack.imgur.com/hzk6C.gif" />
-        </div>
+        @* <p>Cargando por default!!..</p> *@
+        @* ahora usaremos un componente propio con un GIF de loading *@
+        <Loading />
     }
     else
     {
+        @* va a imprimir el loading que envian al llamar a la clase *@
         @Loading
     }
 

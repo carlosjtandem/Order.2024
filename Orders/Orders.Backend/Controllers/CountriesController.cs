@@ -27,7 +27,7 @@ namespace Orders.Backend.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
-            return Ok(await _context.Countries.ToListAsync());
+            return Ok(await _context.Countries.AsNoTracking().ToListAsync()); //Para evitar generar LOG innecesario, esto puede afectar operaciones mas complejas
         }
 
         [HttpGet("{id}")]
